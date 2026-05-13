@@ -1,0 +1,28 @@
+name: DOGE Price Alert
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # runs every hour on the hour
+  workflow_dispatch:        # lets you run it manually too (for testing)
+
+jobs:
+  check-price:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run DOGE alert
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python doge_alert.py
