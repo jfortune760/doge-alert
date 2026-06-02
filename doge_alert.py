@@ -3,7 +3,7 @@ import requests
 
 # ── Thresholds ──
 ABOVE = 0.118   # alert if DOGE goes above this
-BELOW = 0.102   # alert if DOGE goes below this
+BELOW = 0.081   # alert if DOGE goes below this
 
 # ── Telegram credentials (pulled from GitHub secrets) ──
 TELEGRAM_TOKEN   = os.environ["TELEGRAM_TOKEN"]
